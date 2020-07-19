@@ -274,6 +274,3 @@ Lunr is distributed under the terms of the [MIT License](http://opensource.org/l
 =======
 # evergreen786.github.io
 >>>>>>> 4345e7cec8454cbebe78f4a39791481dc84534d1
-=======
-# evergreen786.github.io
->>>>>>> 4345e7cec8454cbebe78f4a39791481dc84534d1
