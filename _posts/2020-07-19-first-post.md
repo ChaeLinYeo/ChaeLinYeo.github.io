@@ -4,4 +4,76 @@ data : 2020-07-19 11:00:28 -0400
 categories : KETI 모비우스
 ---
 
-개발환경 구축(Raspberrypi)
+## 개발환경 구축(Raspberrypi)
+### &Cube-Thyme for Nodejs 개발환경 구축
+#### Rasbian OS 설치
+라즈베리4를 사용하여 nCube-Thyme-Nodejs를 구동할 것이다. 모비우스 플랫폼을 이용하여 라즈베리파이를 연결해 데이터가 연동될 수 있도록 하는게 목표다.
+우선, 마이크로SD카드(64기가를 사용했다)에 Raspbian OS를 설치한다. 
+https://raspberrypi.org/downloads/
+NOOBS와 RASPBIAN이 있는데, RASPBIAN을 선택한다. 이후 ~with desktop인 OS를 찾아 다운받는다.
+
+주의! 64기가 이상의 마이크로 SD카드를 사용하는 경우, 64G 이상부터는 SDXC 타입의 포맷 방식이 exFAT32로 디폴트 적용되어 인식문제가 발생한다.
+라즈베리파이의 부트로더가 exFAT 타입을 읽지 못하기에 64G SD카드도 FAT32로 포맷하기위해 별도 포매터를 설치해야 한다.
+https://www.raspberrypi.org/documentation/installation/sdxc_formatting.md 이곳에서 포매터를 다운받아 한번 포맷해준다.
+
+
+#### Win32 dis imager를 다운로드하여 실행 & MicroSD카드에 Raspbian OS 쓰기
+Win32 disk imager를 다운받아 Image File항목에 전에 다운 받은 Rasbian OS 이미지를 선택,
+Device 항목에 포맷한 MicroSD를 선택,
+Write 버튼을 클릭하여 라즈비안 설치를 완료한다. 
+라즈베리파이 4에 완성된 마이크로 SD카드를 삽입하고, 모니터와 연결한 뒤 라즈베리파이에 전원을 연결해주면 라즈비안이 구동된다!
+(SD카드가 제대로 인식되었다면 노란색 불이 깜빡거린다.)
+
+
+#### SSH 환경설정
+이제부터 라즈베리파이에서 하는 작업이다.
+원격으로 라즈베리파이4에 접근하여 작업하기 위해 터미널의 SSH 명령어 사용 또는 Putty 설치를 통한 SSH연결을 해야한다.
+터미널 창을 열고, sudo raspi-config를 입력한다.
+5번째 줄의 Interfacing Options를 선택한다.
+P2 SSH를 선택하여 enable상태로 바꿔준다.
+
+
+#### Node-js 설치
+Curl 명령어를 이용하여 최신버전 Node.js를 패키지목록에 추가한다.
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - 
+에러 없이 끝나면 성공! 이제 Apt-get 명령어를 통해 node-js 패키지 설치 및 설치완료 후 버전을 확인한다.
+sudo apt-get install -y nodejs
+에러 없이 끝나면 성공! 버전 확인 명령어는 다음과 같다.
+node -v
+npm -v
+
+
+#### Samba 설치
+Apt-get 명령어를 통해 Samba 설치 및 설치 후 Samba 사용자 등록을 진행한다.
+Samba 설치 명령어는 다음과 같다.
+sudo apt-get install samba samba-common-bin
+사용자 등록 명령어는 다음과 같다.
+sudo smbpasswd -a pi
+이렇게 하면 사용자 이름이 "pi"로 생성된다.
+비밀번호까지 지정해주면 성공! 나는 raspberry로 했다.
+이제 /etc/samba/smb.conf 파일을 수정하여 Samba를 설정한다.
+sudo nano /etc/samba/smb.conf로 파일에 들어가 마지막으로 쭉 내려서 다음과 같은 정보를 입력한다.
+[pi]
+path = /home/pi
+comment = PI SAMBA SERVER
+valid user = pi
+writable = yes
+browseable = yes
+create mask = 0777
+public = yes
+다 입력했으면 ctrl+X키로 저장 후 다음과 같은 명령어를 통해 서버설정이 반영될 수 있도록 Samba를 재시작한다.
+sudo service smbd restart
+
+이제 윈도우 노트북을 준비한다.
+Windows 실행 창에 \\Raspberry pi ip주소(ex. \\192.168.0.98)을 입력하고, 계정과 비밀번호를 각각 pi와 samba 사용자 추가시 입력하였던 비밀번호를 입력한다.
+그러면 짜잔! 윈도우 노트북에서 라즈베리파이를 열어볼 수 있다!
+이때 주의!! 라즈베리파이와 윈도우 노트북이 같은 wifi를 사용해야 한다.
+
+
+#### &Cube-Thyme for Nodejs 다운로드
+OCEAN 홈페이지에서 nCube Thyme Nodejs 버전을 다운받는다.
+가장 최신버전으로 다운받아주면 된다! 
+http://developers.iotocean.org/archives/module/ncube-thyme-nodejs
+
+
+다음 포스팅에서는 라즈베리파이4에서 nCube-Thyme-Nodejs를 구동해볼 것이다.
