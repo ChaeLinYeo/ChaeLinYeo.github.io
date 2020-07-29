@@ -12,7 +12,7 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "contrast" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "plum" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale                   : ko-KR #"en-US"
@@ -23,10 +23,10 @@ name                     : 여채린"
 description              : "개발 공부 깃헙 블로그"
 url                      : "https://ChaeLinYeo.github.io" # the base hostname & protocol for your site e.g. 
 baseurl                  : # the subpath of your site, e.g. "/blog"
-repository               : "ChaeLinYeo/ChaeLinYeo.github.com"# GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+repository               : "ChaeLinYeo/ChaeLinYeo.github.com" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
-masthead_title           : "Toy Box"# overrides the website title displayed in the masthead, use " " for no title
+masthead_title           : "Toy Box" # overrides the website title displayed in the masthead, use " " for no title
 breadcrumbs            : true # true, false (default)
 words_per_minute         : 200
 comments:
@@ -93,7 +93,7 @@ analytics:
 
 # Site Author
 author:
-  name             : "여채린"
+  name             : "채린"
   avatar           : "/assets/images/profile/rabit.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "개발 공부하는 블로그"
   location         : "Republic of Korea"
@@ -101,7 +101,7 @@ author:
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      # url: "mailto:your.name@email.com"
+      url: "mailto:gomgomtoto@gmail.com"
     - label: "Website"
       icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
