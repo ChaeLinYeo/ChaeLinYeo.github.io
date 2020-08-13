@@ -15,7 +15,7 @@ remote_theme           : "mmistakes/minimal-mistakes"
 minimal_mistakes_skin    : "mint" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
-locale                   : ko-KR #"en-US"
+locale                   : en-US#ko-KR #"en-US"
 title                    : "Toy Box"
 title_separator          : "-"
 subtitle                 : "끄적끄적" # site tagline that appears below site title in masthead
