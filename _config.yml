@@ -15,13 +15,13 @@ remote_theme           : "mmistakes/minimal-mistakes"
 minimal_mistakes_skin    : "mint" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
-locale                   : ko-KR #"en-US"
+locale                   : en-US#ko-KR #"en-US"
 title                    : "Toy Box"
 title_separator          : "-"
 subtitle                 : "끄적끄적" # site tagline that appears below site title in masthead
 name                     : 여채린"
 description              : "개발 공부 깃헙 블로그"
-url                      : "https://ChaeLinYeo.github.io" # the base hostname & protocol for your site e.g. 
+url                      : "https://chaelinyeo.github.io" # the base hostname & protocol for your site e.g. 
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "ChaeLinYeo/ChaeLinYeo.github.com" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
