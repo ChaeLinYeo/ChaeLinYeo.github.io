@@ -1,6 +1,6 @@
 ---
-title : "[Mindstorms EV3]LineTrace 로봇 프로그래밍:U자형 커브"
-data : 2020-09-22 00:15:28 -0400
+title : "[Mindstorms EV3]LineTrace 로봇 프로그래밍:S자형 커브"
+data : 2020-09-27 00:15:28 -0400
 categories : MindstormsEV3
 ---
 ## Goal
@@ -20,7 +20,7 @@ categories : MindstormsEV3
 
 ## 하드웨어
 - Mindstorms EV3 메뉴얼의 기본 로봇 구조
-- 컬러 감지 센서 한개
+- 컬러 감지 센서 두개
 - 모터 두개
 - 바퀴 두개
 <br>
@@ -33,10 +33,11 @@ from ev3dev2.sound import Sound
 from ev3dev2.sensor.lego import ColorSensor
 from time import sleep
 
-#sensor
-cs = ev3.ColorSensor()
-#so = Sound()
-#so.beep()
+#color sensor
+cs_l = ev3.ColorSensor(ev3.INPUT_2)
+cs_r = ev3.ColorSensor(ev3.INPUT_3)
+#black:1 / green:3 / red:5 / white:6
+
 speed = 100
 rm = ev3.LargeMotor('outC')
 lm = ev3.LargeMotor('outB')
@@ -44,28 +45,33 @@ greenflag=0
 
 while(True):
     try:
-        cs = ev3.ColorSensor()
-        if(cs.color == 1):    #if color is black
-            rm.run_to_rel_pos(position_sp=1080, speed_sp=speed)
-            lm.run_to_rel_pos(position_sp=1080, speed_sp=speed)
-        elif(cs.color == 3 and greenflag==0):    #if color is green
-            #sleep(3)
+        if(cs_l.color==1 and cs_r.color==6):    #turn left
+            print("turn left / color : ", cs_l.color, cs_r.color)
+            rm.run_to_rel_pos(position_sp=1080, speed_sp=speed+265)
+            lm.run_to_rel_pos(position_sp=1080, speed_sp=speed-55)
+        elif(cs_l.color==6 and cs_r.color==1):  #turn right
+            rm.run_to_rel_pos(position_sp=1080, speed_sp=speed-55)
+            lm.run_to_rel_pos(position_sp=1080, speed_sp=speed+265)
+        elif((cs_l.color==3 or cs_r.color==3) and greenflag==0):    #color is green
             print("it is green")
+            print("green / color : ", cs_l.color, cs_r.color)
             greenflag = 1
             rm.stop()
             lm.stop()
             sleep(3)
             rm.run_to_rel_pos(position_sp=1080, speed_sp=speed)
             lm.run_to_rel_pos(position_sp=1080, speed_sp=speed)
-        elif(cs.color == 5):    #if color is red
+        elif(cs_l.color==5 or cs_r.color==5):    #color is red
+            print("red / color : ", cs_l.color, cs_r.color)
             rm.stop()
             lm.stop()
             so = Sound()
             so.beep()
             break
-        elif(cs.color == 6):   #if color is white
+        else:   #go straight
+            print("go straight / color : ", cs_l.color, cs_r.color)
             rm.run_to_rel_pos(position_sp=1080, speed_sp=speed)
-            lm.run_to_rel_pos(position_sp=1080, speed_sp=speed+375)
+            lm.run_to_rel_pos(position_sp=1080, speed_sp=speed)
     except:
         #print(e)
         rm.stop()
@@ -76,25 +82,27 @@ while(True):
 <br>
 
 ## 알고리즘
-- 센서가 검은색을 감지하면
-    - 두 모터의 속도를 동일하게 하여 직진한다.
+- 왼쪽 센서 하얀색, 오른쪽 센서 검은색
+    - 왼쪽 모터의 스피드를 올려 로봇이 커브를 크게 오른쪽으로 돌게 한다.
+
+- 왼쪽 센서 검은색, 오른쪽 센서 하얀색
+    - 오른쪽 모터의 스피드를 올려 로봇이 커브를 크게 왼쪽으로 돌게 한다.
 
 - 센서가 초록색을 감지하고 greenflag가 0이면
     - greenflag를 1로 바꿔서 초록색이 한번만 인지되게 한다.
     - 3초동안 sleep하여 모터를 멈춘다. 
     - 3초 이후 다시 두 모터의 속도를 동일하게 하여 직진한다.
 
-- 센서가 하얀색을 감지하면
-    - 왼쪽 모터의 스피드를 올려 로봇이 커브를 크게 오른쪽으로 돌게 한다.
-
 - 센서가 빨간색을 감지하면
     - 부저가 울리고 두 모터를 정지시킨다.
+
+- 센서가 검은색을 발견하지 못하면
+    - 센서 중 하나가 검은 색을 발견 할 때까지 계속 직진
 <br>
 <br>
 
 ## 실험적인 결과로 얻은 적절한 모터값
-
-
+- 우회전할 때
 |Situation|Left Motor|Right Motor|
 |---|---|---|
 |Initial value|100|100|
@@ -103,6 +111,14 @@ while(True):
 |Green color detected|0|0|
 |Red color detected|0|0|
 
+- 좌회전할 때
+|Situation|Left Motor|Right Motor|
+|---|---|---|
+|Initial value|100|100|
+|White color detected|100|475|
+|Black color detected|100|100|
+|Green color detected|0|0|
+|Red color detected|0|0|
 <br>
 <br>
 
