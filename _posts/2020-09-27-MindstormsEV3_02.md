@@ -113,6 +113,8 @@ while(True):
 <br>
 
 ## 실험적인 결과로 얻은 적절한 모터값
+
+
 |Situation|Left Motor|Right Motor|
 |---|---|---|
 |Initial value|190|190|
