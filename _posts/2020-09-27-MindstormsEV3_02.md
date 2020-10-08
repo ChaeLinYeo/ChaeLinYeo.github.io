@@ -122,6 +122,7 @@ while(True):
 |Black color detected(우회전)|400|-10|
 |Green color detected|0|0|
 |Red color detected|0|0|
+
 <br>
 <br>
 
