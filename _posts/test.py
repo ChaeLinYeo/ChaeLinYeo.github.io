@@ -1,66 +1,38 @@
-class Node:
+# def solution(v):
+#     answer = [-1,-1]
 
-    def __init__(self, item):
-        self.data = item
-        self.next = None
+#     if v[0][0] == v[1][0]: answer[0] = v[2][0]
+#     if v[0][0] == v[2][0]: answer[0] = v[1][0]
+#     if v[1][0] == v[2][0]: answer[0] = v[0][0]
+    
+#     if v[0][1] == v[1][1]: answer[1] = v[2][1]
+#     if v[0][1] == v[2][1]: answer[1] = v[1][1]
+#     if v[1][1] == v[2][1]: answer[1] = v[0][1]
+#     return answer
 
+# print(solution([[1, 4], [3, 4], [3, 10]]))
 
-class LinkedList:
+# import operator
+# def solution(max_weight, specs, names):
+#     d = dict(specs)
+#     answer = 1
+#     weight = 0
+#     # for i in range(len(specs)):
+#     #     specs[i][1] = int(specs[i][1])
+#     # sd = dict(specs)
+#     # # print(sd)
+#     # # d = sorted(sd.items(), key=operator.itemgetter(0))
+#     # d = sorted(sd.items(), key = lambda item: item[1])
+#     # # print(d)
+#     # d = dict(d)
+#     # # print(d)
+#     for name in names:
+#         weight += int(d.get(name))
+#         if weight > max_weight:
+#             answer += 1
+#             weight += int(d.get(name))
+#     return answer
 
-    def __init__(self):
-        self.nodeCount = 0
-        self.head = None
-        self.tail = None
-
-
-    def getAt(self, pos):
-        if pos < 1 or pos > self.nodeCount:
-            return None
-
-        i = 1
-        curr = self.head
-        while i < pos:
-            curr = curr.next
-            i += 1
-
-        return curr
-
-
-    def insertAt(self, pos, newNode):
-        if pos < 1 or pos > self.nodeCount + 1:
-            return False
-
-        if pos == 1:
-            newNode.next = self.head
-            self.head = newNode
-
-        else:
-            if pos == self.nodeCount + 1:
-                prev = self.tail
-            else:
-                prev = self.getAt(pos - 1)
-            newNode.next = prev.next
-            prev.next = newNode
-
-        if pos == self.nodeCount + 1:
-            self.tail = newNode
-
-        self.nodeCount += 1
-        return True
+# print(solution(200, [["toy", "50"], ["snack", "180"]], ["toy", "snack", "toy"]))
 
 
-    def popAt(self, pos):
-        
-
-
-    def traverse(self):
-        result = []
-        curr = self.head
-        while curr is not None:
-            result.append(curr.data)
-            curr = curr.next
-        return result
-
-
-def solution(x):
-    return 0
