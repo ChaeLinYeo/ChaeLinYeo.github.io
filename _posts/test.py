@@ -1,24 +1,22 @@
-def solution(numbers):
-    answer = ''
-    numbers = list(map(str, numbers))
-    numbers.sort(key=lambda x : (x*4)[:4], reverse = True)
-    if numbers[0] == '0':
-        answer = '0'
-    else:
-        answer = ''.join(numbers)
+# heap.heapify(L) # 리스트 L로부터 min heap 구성
+# m = heapq.heappop(L) # min heap L에서 최소값 삭제(반환)그리고 다시 힙의 구조를 유지한다.
+# heapq.heappush(L, x) # min heap L에 원소 x 삽입 그리고 다시 힙의 구조를 유지한다.
+import heapq
+def solution(scoville, K):
+    answer = 0
+    heapq.heapify(scoville)# 힙을 만든다.
+    
+    while scoville[0] < K:# 배열의 모든 요소가 스코빌 기준치 이상일때까지 돌린다
+        if len(scoville)==2:# 음식을 다 섞었는데도 스코빌 기준치를 못넘으면
+            if heapq.heappop(scoville)+(heapq.heappop(scoville)*2) < K:
+                return -1
+            else:
+                return answer-1
+        elif len(scoville)==0:
+            return -1
+        heapq.heappush(scoville, heapq.heappop(scoville)+(heapq.heappop(scoville)*2))
+        answer += 1
+    # print(scoville)
+
     return answer
-
-# def solution(numbers):
-#     numbers = [str(x) for x in numbers] # 문자열로 변환. O(n)복잡도를 가진다.
-#     numbers.sort(key=lambda x : (x*4)[:4], reverse = True) # x라는 원소가 주어지면 4번 반복하고 앞에서 4개까지를 슬라이스해서 딱 4개에 맞게 떨어지도록 만든다. 그리고 내림차순으로 정렬한다. O(nlogn)복잡도를 가진다.
-#     print(numbers)
-#     if numbers[0] == '0':
-#         answer = '0'
-#         # 만약 0만 두개 이상 들어있는 배열이 주어진다면, 00, 0000 이런게 나오게 될텐데, 그럴때는 0 한글자로 이루어진 문자열을 리턴하게 해야한다.
-#     else:
-#         answer = ''.join(numbers)
-#     # if에 의한 수행은 O(n)
-#     return answer
-
-print(solution([6, 00, 2]))
-# print(solution([3, 30, 34, 5, 9])) # 9534330
+print(solution([1, 2, 3, 9, 10, 12], 7))
