@@ -1,3 +1,4 @@
+## 프로그래머스 코테
 # def solution(n, words):
 #     answer = [0, 0]
 #     cnt = 0
