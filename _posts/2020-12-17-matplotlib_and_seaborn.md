@@ -402,8 +402,9 @@ plt.show()
 
 
 
+# 7강
 
-## IV. The 멋진 그래프, Seaborn Case Study
+## 7. The 멋진 그래프, Seaborn Case Study
 
 ### Matplotlib를 기반으로 더 다양한 시각화 방법을 제공하는 라이브러리
 - 커널밀도그림
