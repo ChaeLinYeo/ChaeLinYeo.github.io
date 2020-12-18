@@ -221,3 +221,30 @@ covid_by_region.mean() # sum() / 국가 수
 우려했던 바와 같이, 유럽같은 경우 표본의 수가 많아서 확진자 수가 많이 집계된 경우였다.  
 South-East Asia의 경우 국가당 확진자 수가 많은 것임을 알 수 있다.  
 이런 식으로 새로운 인사이트들을 뽑아낼 수 있다.  
+<br>
+<br>
+<br>
+
+### 1. covid 데이터에서 100 case 대비 사망률(`Deaths / 100 Cases`)이 가장 높은 국가는?
+```python
+import pandas as pd
+covid = pd.read_csv("./archive/country_wise_latest.csv")
+
+covid[covid['Deaths / 100 Cases'] == covid['Deaths / 100 Cases'].max()]['Country/Region']
+```
+
+### 2. covid 데이터에서 신규 확진자가 없는 나라 중 WHO Region이 'Europe'를 모두 출력하면?  
+Hint : 한 줄에 동시에 두가지 조건을 Apply하는 경우 Warning이 발생할 수 있습니다.  
+```python
+covid_no_cases = covid['New cases']==0
+covid_europe = covid['WHO Region']=='Europe'
+answer = covid[covid_no_cases & covid_europe]
+answer
+```
+
+### 3. 다음 [데이터](https://www.kaggle.com/neuromusic/avocado-prices)를 이용해 각 Region별로 아보카도가 가장 비싼 평균가격(AveragePrice)을 출력하면?
+```python
+avocado = pd.read_csv("./archive/avocado.csv")
+exp = avocado.groupby(avocado['region'])
+exp.max()
+```
