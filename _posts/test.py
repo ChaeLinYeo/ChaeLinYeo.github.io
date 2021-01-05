@@ -51,49 +51,71 @@
 
 
 
-from itertools import permutations
-def solution(arr):
-    answer = []
+# from itertools import permutations
+# def solution(arr):
+#     answer = []
 
-    for i in range(len(arr)):
-        if i%2==0:
-            arr[i] = int(arr[i])
+#     for i in range(len(arr)):
+#         if i%2==0:
+#             arr[i] = int(arr[i])
 
-    num = len(arr)//2
-    idx = []
-    for i in range(num):
-        idx.append(2*i+1)
+#     num = len(arr)//2
+#     idx = []
+#     for i in range(num):
+#         idx.append(2*i+1)
 
-    calclist = list(permutations(idx)) #순열
-    for calc in calclist:
-        temp = arr[:]
-        j = 0
-        while j < len(calc):
-            idx = calc[j]
-            a = temp[idx-1]
-            b = temp[idx+1]
-            operation = temp[idx]
-            if operation == "-":
-                temp = temp[:idx-1]+[a-b]+temp[idx+2:]
-            else :
-                temp = temp[:idx-1]+[a+b]+temp[idx+2:]
-            # calc = [e-2 if e > idx else e for e in calc]
-            for e in calc:
-                # print(e)
-                if e > idx:
-                    calc[calc.index(e)] = e-2
-                else:
-                    calc[calc.index(e)]  = e
+#     calclist = list(permutations(idx)) #순열
+#     for calc in calclist:
+#         temp = arr[:]
+#         j = 0
+#         while j < len(calc):
+#             idx = calc[j]
+#             a = temp[idx-1]
+#             b = temp[idx+1]
+#             operation = temp[idx]
+#             if operation == "-":
+#                 temp = temp[:idx-1]+[a-b]+temp[idx+2:]
+#             else :
+#                 temp = temp[:idx-1]+[a+b]+temp[idx+2:]
+#             # calc = [e-2 if e > idx else e for e in calc]
+#             for e in calc:
+#                 # print(e)
+#                 if e > idx:
+#                     calc[calc.index(e)] = e-2
+#                 else:
+#                     calc[calc.index(e)]  = e
 
-            print(calc)
-            # calc = list(calc)
-            j+= 1
-        answer.append(temp[0])
+#             print(calc)
+#             # calc = list(calc)
+#             j+= 1
+#         answer.append(temp[0])
 
-    # print(answer)
-    return max(answer)
+#     # print(answer)
+#     return max(answer)
 
 
-arr =["1", "-", "3", "+", "5", "-", "8"]
-result=solution(arr)
-print(result)
+# arr =["1", "-", "3", "+", "5", "-", "8"]
+# result=solution(arr)
+# print(result)
+
+
+import turtle
+import math
+import random
+
+wn = turtle.Screen()
+turtle.tracer(8,0)
+alex = turtle.Turtle()
+alex.hideturtle()
+r=200
+for i in range(5000):
+    u = random.random()
+    d = r*(u**0.5)
+    theta = random.random()*360
+    x = d * math.cos(math.radians(theta))
+    y = d * math.sin(math.radians(theta))
+    alex.penup()
+    alex.setposition(x, y)
+    alex.dot()
+turtle.update()
+wn.mainloop()
