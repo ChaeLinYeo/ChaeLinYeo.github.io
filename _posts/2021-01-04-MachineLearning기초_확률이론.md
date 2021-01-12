@@ -143,8 +143,8 @@ M이 커질수록 계수의 절대값이 커짐을 알 수 있다. M이 커질�
 $S = {HH, HT, TH, TT}$  
 $X(HH) = 2, X(HT) = 1, X(TH) = 1, X(TT) = 0$  
 이 확률변수(확률함수)는 H가 몇번 등장하는지를 기준으로 한다고 하자.  
-$P[X = 1] = P[{HT, TH}] = 2  \above 1pt 4 = 1 \above 1pt 2$  
-$P[X \leq 1] = P[{HT, TH, TT}] = 3  \above 1pt 4$  
+$P[X = 1] = P[{HT, TH}] = {2  \above 1pt 4} = {1 \above 1pt 2}$  
+$P[X \leq 1] = P[{HT, TH, TT}] = {3  \above 1pt 4}$  
 <br>
 
 ## 연속확률변수(Continuous Random Variables)
