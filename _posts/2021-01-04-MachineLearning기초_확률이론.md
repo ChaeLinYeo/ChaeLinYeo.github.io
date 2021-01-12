@@ -196,7 +196,8 @@ $J = \begin{bmatrix}
 {\partial x_2} \above 1pt {\partial y_1} & \ldots &  & \vdots\\ 
 \vdots &  &  & \\ 
 {\partial x_k} \above 1pt {\partial y_1} & \ldots &  & {\partial x_k} \above 1pt {\partial y_k}
-\end{bmatrix}$  
+\end{bmatrix}$
+  
 ![png](/assets/images/2021-01-04/11.png)   
 우리가 원하는 것은 새로운 확률변수의 벡터 $y$에 대해서 그것의 확률밀도함수를 원하는 것이다. 그리고 이것은 단일변수가 아니라 $k$개의 확률변수에 대한 결합확률밀도함수를 구하고자 하는 것인데, 이것을 구하는 방법은 $x$의 결합확률밀도함수에 $|J|$를 곱하는 것이다. $|J|$는 선형대수시간에 배운 determinent(행렬식)의 값에 절대값을 씌운 것이다. 야코비안(자코비안)이라고 부른다. 
 $\partial$은 편미분을 한 것이다.  
