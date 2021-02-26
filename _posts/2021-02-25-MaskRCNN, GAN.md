@@ -1,5 +1,5 @@
 ---
-title : "[Visual MaskRCNN, GAN(Generative Adversarial Networks)"
+title : "[Visual Recognition] MaskRCNN, GAN(Generative Adversarial Networks)"
 data : 2021-02-25 00:15:28 -0400
 categories : 프로그래머스인공지능스쿨
 use_math: true
@@ -117,8 +117,8 @@ Faster RCNN(Object Detection) + FCN(Semantic Segmentation) = Mask-RCNN(Instance 
 - RoIAlign은 피쳐맵 위에 있는 그리드 포인트로부터 bilinear interpolation을 하여 각 샘플링 포인트의 값을 계산함
 <br>
 
-
-
+## Mask R-CNN Customize해서 나만의 디텍션 모델 만들기
+https://hansonminlearning.tistory.com/m/16
 
 # 주말과제 해설 세션
 ![png](/assets/images/2021-02-25/homework.png)  
