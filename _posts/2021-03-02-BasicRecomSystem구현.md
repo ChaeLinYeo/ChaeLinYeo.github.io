@@ -162,4 +162,14 @@ use_math: true
 ## CountVectorizer/TFIdfVectorizer/코사인 유사도 실습
 - 앞서 설명한 개념들을 실제 코드로 실습
 - 이를 바탕으로 뒤에서 컨텐츠 기반 추천 엔진 개발
-<https://colab.research.google.com/drive/1WRd0uhPSwLVuQk998teEaziCHesMNawD?usp=sharing>  
+- <https://colab.research.google.com/drive/1WRd0uhPSwLVuQk998teEaziCHesMNawD?usp=sharing>  
+<br>
+<br>
+
+## TF-IDF를 이용한 컨텐츠 기반 추천과 실습
+- 영화 추천을 위해 TMDB 데이터 재사용
+- 컨텐츠 기반 추천 엔진 개발
+    - TfIdfVectorizer와 cosine_similarity를 사용
+- <https://colab.research.google.com/drive/1xbFjBvzgiDpPwBwKiaMw0ByWos12EAiD?usp=sharing>
+<br>
+<br>
