@@ -1,7 +1,7 @@
 ---
 title : "[프로그래머스 코딩테스트]Level03 - N-Queen"
 data : 2021-04-17 00:15:28 -0400
-categories : 프로그래머스코테
+categories : 코테
 use_math: true
 ---
 ## Level 03 - N-Queen
@@ -44,6 +44,12 @@ use_math: true
         - queen[i]-queen[j] == j-i
     - 즉 queen[i]와 queen[k]의 절댓값으로 대각선 위협 판단
 
+```
+	     0, 1, 2, 3
+queen = [0, 0, 0, 0] ->각각은 row를 뜻함. 0,1,2,3번 row
+	     ㄴ> column 0,1,2,3을 각 row에 넣어보며 promiss 여부 확인
+```
+
 ```python
 def is_promiss(queen, row):
     for i in range(row):
@@ -68,4 +74,33 @@ def solution(n):
     return n_queens(queen, 0)
 
 print(solution(4)) #2
+```
+
+백준에 동일한 문제가 있는데 위 코드로 python3, pypy3 둘다 시간초과뜸.  
+dfs로 pypy3 제출하니 통과됨.  
+
+```python
+def is_promiss(row):
+    for i in range(1, row):
+        if queen[i]==queen[row] or abs(queen[i]-queen[row])==abs(i-row):
+            return 0
+    return 1
+
+def dfs(row):
+    global result
+    if row > n:
+        result +=1
+    else:
+        for col in range(1,n+1):
+            queen[row] = col
+            if is_promiss(row):
+                dfs(row+1)
+
+n = int(input())
+# queen = [0]*n
+queen = [0 for i in range(16)]
+result = 0
+dfs(1)
+print(result)
+
 ```

@@ -1,7 +1,7 @@
 ---
 title : "[프로그래머스 코딩테스트]Level03 - FloodFill"
 data : 2021-04-13 00:15:28 -0400
-categories : 프로그래머스코테
+categories : 코테
 use_math: true
 ---
 ## Level 03 - FloodFill
